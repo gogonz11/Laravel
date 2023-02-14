@@ -35,7 +35,7 @@ Route::get('/about', function () {
 
         "title"     => "About",
         "active"     => "about",
-        "name"      => "Rasheeda Azelia",
+        "name"      => "Rasheeda Azelia Taleetha",
         "email"     => "rasheedaazelia@gmail.com",
         "image"     => "D.PNG"
 
@@ -65,7 +65,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
         'title' => "Post By Author : $author->name",
-
+        'active' => 'blog',
         'posts' => $author->posts->load('category', 'author'),
     ]);
 });
