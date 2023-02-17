@@ -33,7 +33,7 @@
         </small></p>
         <p class="card-text">{{ $posts[0]->excerpt }}</p>
 
-        <a href="/posts/{{ $posts[0]->slug }}" class="btn btn-primary">Read more</a>
+        <a href="/posts/{{ $posts[0]->slug }}" class="btn btn-dark">Read more</a>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                   <h5 class="card-title">{{ $post->title }}</h5>
                     <p>By : <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a></p>
                   <p class="card-text">{{ $post->excerpt }}</p>
-                  <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Read More</a>
+                  <a href="/posts/{{ $post->slug }}" class="btn btn-dark">Read More</a>
                 </div>
               </div>
         </div>
