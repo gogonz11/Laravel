@@ -17,10 +17,6 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
     return view('home', [
 
@@ -29,7 +25,6 @@ Route::get('/', function () {
 
     ]);
 });
-
 
 Route::get('/about', function () {
     return view('about', [
@@ -55,25 +50,17 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::get('/dashboard', function () {
+    return view('dashboard.index', [
 
-
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('posts', [
-//         'title' => "Post By Category : $category->name",
-//         'active' => 'categories',
-//         'posts' => $category->posts->load('category', 'author')
-//     ]);
-// });
-
-// Route::get('/authors/{author:username}', function (User $author) {
-//     return view('posts', [
-//         'title' => "Post By Author : $author->name",
-//         'active' => 'blog',
-//         'posts' => $author->posts->load('category', 'author'),
-//     ]);
-// });
+        'title' => 'Dashboard',
+        'active' => 'dashboard'
+    ]);
+})->middleware(['auth'])->name('dashboard');
