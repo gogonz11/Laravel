@@ -5,11 +5,12 @@
     <h1 class="h2">My Blog</h1>
   </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped table-sm">
+  <div class="table-responsive col-lg-10">
+    <a href="/dashboard/posts/create" class="btn btn-primary"><span data-feather="plus-circle"></span>   Create</a>
+    <table class="table table-striped table-sm mt-3">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">No</th>
           <th scope="col">Title</th>
           <th scope="col">Category</th>
           <th scope="col">Action</th>
