@@ -2,7 +2,6 @@
 
 @section('container')
    
-
 <div class="row justify-content-center">
     <div class="col-lg-5">
         <main class="form-register w-100 m-auto">
@@ -50,6 +49,5 @@
           </main>
     </div>
 </div>
-
 
 @endsection
