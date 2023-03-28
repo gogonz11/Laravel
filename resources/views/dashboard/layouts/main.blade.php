@@ -9,6 +9,15 @@
   
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="/css/dashboard.css">
+
+    {{-- {{ Trix Editor }} --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"] {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     
@@ -20,7 +29,7 @@
 @include('dashboard.layouts.sidebar')
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-@yield('content')
+@yield('container')
     </main>
   </div>
 </div>
@@ -31,6 +40,7 @@
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
       <script src="{{ asset('js/app.js') }}"></script>
       <script src="https://unpkg.com/feather-icons"></script>
+      <script type="text/javascript" src="/js/trix.js"></script>
       <script>
         feather.replace()
       </script>
