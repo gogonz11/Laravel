@@ -14,8 +14,8 @@
             <input type="text" class="form-control" id="title" name="Title">
           </div>
         <div class="mb-3">
-            <label for="slug" class="form-label">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug">
+            <label for="category" class="form-label">Category</label>
+            <input type="text" class="form-control" id="category" name="category">
           </div>
           
             <button type="submit" class="btn btn-primary">Create Blog</button>
@@ -24,18 +24,7 @@
   </div>
   
 <script>
-    const title = document.querySelector('#title');
-    const slug = document.querySelector('#slug');
     
-    title.addEventListener('change', function() {
-        fetch('/dashboard/posts/createSlug')
-        .then(response => response.json())
-        .then(data => slug.value = data.slug)
-    })
-    
-    // document.addEventListener('trix-file-accept', function(e) {
-    //     e.preventDefault();
-    // })
 </script>
 
 @endsection
