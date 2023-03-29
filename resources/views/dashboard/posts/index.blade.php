@@ -6,10 +6,11 @@
   </div>
 
   @if (session()->has('success'))
-  <p class="alert alert-success" role="alert">
+  <p class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}
   @endif
-  <div class="table-responsive col-lg-10">
+
+  <div class="table-responsive col-lg-8">
     <a href="/dashboard/posts/create" class="btn btn-primary"><span data-feather="plus-circle"></span>   Create</a>
     <table class="table table-striped table-sm mt-3">
       <thead>
@@ -28,11 +29,11 @@
           <td>{{ $post->category->name }}</td>
           <td>
             <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-sm btn-info"><span data-feather="eye"></span></a>
-            <a href="" class="btn btn-sm btn-warning"><span data-feather="edit"></span></a>
-            <form action="" method="POST" class="d-inline">
+            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-sm btn-warning"><span data-feather="edit"></span></a>
+            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
               @csrf
-              @method('DELETE')
-              <button type="submit" class="btn btn-sm btn-danger"><span data-feather="x-circle"></span></button>
+              @method('delete')
+              <button class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ?')"><span data-feather="x-circle"></span></button>
             </form>
           </td>
         @endforeach

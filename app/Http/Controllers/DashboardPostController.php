@@ -43,13 +43,21 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+        // ddd($request->all());
+
+        // return $request->file('image')->store('posts-images');
 
         $validate = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
+            'image' => 'image|file|max:5048',
             'body' => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validate['image'] = $request->file('image')->store('posts-images');
+        }
 
         $validate['user_id'] = auth()->user()->id;
         $validate['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -81,7 +89,10 @@ class DashboardPostController extends Controller
      */
     public function edit(post $post)
     {
-        //
+        return view('dashboard.posts.edit', [
+            'post' => $post,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -93,7 +104,25 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, post $post)
     {
-        //
+        $rules = ([
+
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
+
+        if ($request->slug != $post->slug) {
+            $rules['slug'] = 'required|unique:posts';
+        }
+
+        $validate = $request->validate($rules);
+
+        $validate['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validate['user_id'] = auth()->user()->id;
+
+        Post::where('id', $post->id)->update($validate);
+
+        return redirect('/dashboard/posts')->with('success', 'Post updated successfully');
     }
 
     /**
@@ -104,7 +133,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(post $post)
     {
-        //
+        Post::destroy($post->id);
+
+        return redirect('/dashboard/posts')->with('success', 'Post deleted successfully');
     }
 
     public function checkSlug(Request $request)

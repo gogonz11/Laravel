@@ -24,7 +24,7 @@ class PostFactory extends Factory
             // 'body'    => collect($this->faker->paragraphs(mt_rand(5, 10)))->map(fn ($p) => "<p>$p</p>")
             //     ->implode(''),
             'user_id'   => mt_rand(1, 3),
-            'category_id' => mt_rand(1, 2),
+            'category_id' => mt_rand(1, 3),
             'published_at' => now(),
             'created_at' => now(),
             'updated_at' => now()

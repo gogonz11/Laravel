@@ -16,7 +16,7 @@ class Post extends Model
 
     // protected $guarded = ['id'];
     // protected $with = ['category', 'author'];
-    protected $fillable = ['title', 'slug', 'excerpt', 'body', 'category_id', 'user_id'];
+    protected $fillable = ['title', 'slug', 'excerpt', 'body', 'category_id', 'user_id', 'image'];
 
     public function scopeFilter($query, array $filters)
     {
