@@ -13,6 +13,13 @@
             Blog
           </a>
         </li>
+        <br>
+        <li class="nav-item">
+          <a class="nav-link {{ Request::is('') ? 'active' : '' }}" aria-current="page" href="/">
+            <span data-feather="arrow-left" class="align-text-bottom"></span>
+            Back to Home
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

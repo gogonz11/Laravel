@@ -6,10 +6,9 @@
   </div>
 
   @if (session()->has('success'))
-  <div class="alert alert-success" role="alert">
+  <p class="alert alert-success" role="alert">
     {{ session('success') }}
   @endif
-
   <div class="table-responsive col-lg-10">
     <a href="/dashboard/posts/create" class="btn btn-primary"><span data-feather="plus-circle"></span>   Create</a>
     <table class="table table-striped table-sm mt-3">
